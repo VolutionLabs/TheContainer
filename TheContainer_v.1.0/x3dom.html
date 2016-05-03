@@ -1,0 +1,286 @@
+
+<html> 
+   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/> 
+     <title></title> 
+     <script type='text/javascript' src='http://www.x3dom.org/download/x3dom.js'> </script> 
+     <link rel='stylesheet' type='text/css' href='http://www.x3dom.org/download/x3dom.css'></link> 
+     <script type="text/javascript" src="http://d3js.org/d3.v2.js"></script>
+     <script>
+     <!--Toggler -->
+     var zoomed = false;
+
+     function toggle(button) {
+
+             var new_size;
+             var x3d_element;
+
+             x3d_element = document.getElementById('the_element');
+
+             title = document.getElementById('title')
+         body  = document.getElementById('body')
+
+             if (zoomed) {
+                     new_size = "50%";
+                     button.innerHTML = "Zoom";
+                     title.style.display = "block"
+                     body.style.padding = '10px'
+             } else {
+                     new_size = "100%";
+                     button.innerHTML = "Unzoom";
+                     title.style.display = "none"
+                     body.style.padding = '0'
+             }
+
+             zoomed = !zoomed;
+
+             x3d_element.style.width = new_size;
+             x3d_element.style.height = new_size;
+     }
+     </script>
+
+	<style>
+		 body {
+        margin:0;
+        padding:10px;
+    }
+   		 #element1 {
+   		   width: 1400px;
+   		   height: 900px;
+   		   border: none;  
+    	position: relative;
+  		  }
+  		  
+  		  #toggler {
+			    position: absolute;
+			    float: left;
+			    z-index: 1;
+			    top: 0px;
+			    left: 0px;
+			    width: 10em;
+			    height: 2em;
+			    border: none;
+			    background-color: #202021;
+			    color: #ccc;
+			}
+			#toggler:hover {
+			    background-color:blue;
+			}
+			  		  
+ 	 </style>
+    
+   </head> 
+   <body> 
+     <h1> extending space..</h1> 
+     <p> 
+      X3DOM
+     </p> 
+     
+      <script>
+     	<!-- manipulate ext.scene content during runtime -->
+	    function redNose()
+	    {
+	        if(document.getElementById('Deer__MA_Nose').getAttribute('diffuseColor')!= '1 0 0')
+	            document.getElementById('Deer__MA_Nose').setAttribute('diffuseColor', '1 0 0');
+	        else
+	            document.getElementById('Deer__MA_Nose').setAttribute('diffuseColor', '0 0 0');
+	    }
+	</script>
+     
+     <audio controls src="http://shoutcast.internet-radio.org.uk:10272;stream/1"></audio>
+     
+	
+	 <x3d id="element1">
+    <button id="toggler" onclick="toggle(this);return false;">Draag&Zoom</button>
+	  
+<!-- SCENE -->
+	   <scene> 
+	   <!-- Viewport Position -->
+	   <viewpoint position="-1.9639 1.79771 -2.89271" orientation="0.03886 0.99185 0.12133 3.75685"></viewpoint>
+	   <!-- Background --> 
+	   <background skyColor='0.5 0.5 0.5'></background>
+	    <!-- Light -->
+		<directionallight shadowsplitoffset="0.1" shadowsplitfactor="1" shadowcascades="1" zfar="-1" znear="-1" shadowmapsize="1024" on="true" intensity="1" color="1,1,1" direction="0 50 150"></directionallight>
+		
+		<!-- SkyBox -->
+		<Transform scaleorientation="0,0,0,0" scale="1,1,1" translation="0,0,0" center="0,0,0" bboxsize="-1,-1,-1" bboxcenter="0,0,0" render="true" rotation="0 1 0 -1.5707963267948966">
+               <shape ispickable="true" bboxsize="-1,-1,-1" bboxcenter="0,0,0" render="true">
+                  <appearance sorttype="auto">
+                     <ImageTexture hidechildren="true" scale="true" repeatt="true" repeats="true" url="textures/sky.jpg"></ImageTexture>
+                  </appearance>
+                  <sphere subdivision="24,24" lit="true" usegeocache="true" ccw="true" solid="false" radius="400"></sphere>
+               </shape>
+            </Transform>   
+            
+            		<!-- SkyBox2 -->
+		<Transform scaleorientation="0,0,0,0" scale="1,1,1" translation="0,0,0" center="0,0,0" bboxsize="-1,-1,-1" bboxcenter="0,0,0" render="true" rotation="0 1 0 -1.5707963267948966">
+               <shape ispickable="true" bboxsize="-1,-1,-1" bboxcenter="0,0,0" render="true">
+                  <appearance sorttype="auto">
+
+                       <MovieTexture repeatS="false" repeatT="false" loop='true' url='video/within.mp4'></MovieTexture> 
+                  </appearance>
+                  <sphere subdivision="24,24" lit="true" usegeocache="true" ccw="true" solid="false" radius="4000"></sphere>
+               </shape>
+            </Transform>  
+            
+              		<!-- SkyBox3 -->
+		<Transform scaleorientation="0,0,0,0" scale="1,1,1" translation="-18000,0,0" center="0,0,0" bboxsize="-1,-1,-1" bboxcenter="0,0,0" render="true" rotation="0 1 0 -1.5707963267948966">
+               <shape ispickable="true" bboxsize="-1,-1,-1" bboxcenter="0,0,0" render="true">
+                  <appearance sorttype="auto">
+                     <MovieTexture repeatS="false" repeatT="false" loop='true' url='video/through.mp4'></MovieTexture>
+           </appearance>
+                  <sphere subdivision="24,24" lit="true" usegeocache="true" ccw="true" solid="false" radius="4000"></sphere>
+               </shape>
+            </Transform>   
+            
+        <!-- SkyBox4 Video1
+		<Transform scaleorientation="0,0,0,0" scale="1,1,1" translation="0,0,0" center="0,0,0" bboxsize="-1,-1,-1" bboxcenter="0,0,0" render="true" rotation="0 1 0 -1.5707963267948966">
+               <shape ispickable="true" bboxsize="-1,-1,-1" bboxcenter="0,0,0" render="true">
+                  <appearance sorttype="auto">
+                     <MovieTexture repeatS="false" repeatT="false" loop='true' url='video/above.mp4'></MovieTexture>
+           </appearance>
+                  <sphere subdivision="24,24" lit="true" usegeocache="true" ccw="true" solid="false" radius="40000"></sphere>
+               </shape>
+            </Transform>      -->  
+
+            		<!-- SkyBox2
+		<Transform scaleorientation="0,0,0,0" scale="1,1,1" translation="900000,0,0" center="0,0,0" bboxsize="-1,-1,-1" bboxcenter="0,0,0" render="true" rotation="0 1 0 -1.5707963267948966">
+               <shape ispickable="true" bboxsize="-1,-1,-1" bboxcenter="0,0,0" render="true">
+                  <appearance sorttype="auto">
+                                        <ImageTexture hidechildren="true" scale="true" repeatt="true" repeats="true" url="img/PANO_20160424_212627.jpg"></ImageTexture></appearance>                  
+                  <sphere subdivision="24,24" lit="true" usegeocache="true" ccw="true" solid="false" radius="40000"></sphere>
+               </shape>
+            </Transform>  -->
+            
+		<!-- Object: Box -->
+		<shape> 
+		   <appearance> 
+			 <material diffuseColor='1 0 0'></material> 
+		   </appearance> 
+		   <box></box> 
+		</shape> 
+		
+		<!-- Object: Text -->
+		<Transform scaleorientation="0,0,0,0" scale="1,1,1" translation="-5,-15,-5" center="0,0,0" bboxsize="-1,-1,-1" bboxcenter="0,0,0" render="true" rotation="0 1 0 -1.5707963267948966">
+         
+		 <shape>
+	        <appearance>
+	          <material ambientIntensity='0.0933' diffuseColor='0.32 0.54 0.26' shininess='0.51' specularColor='0.46 0.46 0.46'></material>
+	        </appearance>
+	        <text string='node representation, entity & space composition in next augmented scape.' solid='false'>
+	            <fontstyle family="'Times' 'Orbitron'" size="5.2"></fontstyle>
+	        </text>
+	      </shape>
+	       </Transform>
+	       
+	       	<!-- Object: Text2 -->
+		<Transform scaleorientation="0,0,0,0" scale="1,1,1" translation="-500,-15,-5" center="0,0,0" bboxsize="-1,-1,-1" bboxcenter="0,0,0" render="true" rotation="0 1 0 -1.5707963267948966">
+         
+		 <shape>
+	        <appearance>
+	          <material ambientIntensity='0.0933' diffuseColor='0.32 0.54 0.26' shininess='0.51' specularColor='0.46 0.46 0.46'></material>
+	        </appearance>
+	        <text string='Hello' solid='false'>
+	            <fontstyle family="'Times' 'Orbitron'" size="100.2"></fontstyle>
+	        </text>
+	      </shape>
+	       </Transform>
+		
+		<!-- Object: Cone -->
+		<transform translation='-3 0 0'> 
+		  <shape onclick="alert("You clicked me");"> 
+			 <appearance> 
+			   <material diffuseColor='0 1 0'></material> 
+			 </appearance> 
+			 <cone></cone> 
+		  </shape> 
+		</transform> 
+		
+		<!-- Object: Sphere -->
+		<transform translation='3 0 0'> 
+		  <shape onclick="alert("You clicked me");"> 
+			 <appearance> 
+			   <material diffuseColor='0 0 1'></material> 
+			 </appearance> 
+			 <sphere></sphere> 
+		  </shape> 
+		</transform> 
+	  
+	   <!-- Object: external x3d scene -->
+	  <transform translation='5 0 0'> 	
+            <!-- manipulate its content during runtime -->
+            <Inline nameSpaceName="objects/Deer" mapDEFToID="true"
+                    onclick='redNose();' url="Deer.x3d" />
+	   </transform> 
+	  
+	  <!-- Object: Box: movie texture -->
+	   <Transform translation='-6 0 0'>
+        <shape>
+           <appearance>
+               <MovieTexture repeatS="false" repeatT="false" loop='true' url='video/within.mp4'></MovieTexture>
+           </appearance>
+            <box></box>
+        </shape>
+        </Transform>
+	  
+		<!-- texture: cesped -->	
+       <shape ispickable="true" bboxsize="-1,-1,-1" bboxcenter="0,0,0" render="true">
+       		<appearance sorttype="auto">
+                  <material specularcolor="0,0,0" shininess="0.2" emissivecolor="0,0,0" ambientintensity="0.2" diffusecolor="1 1 1"></material>
+                  <ImageTexture hidechildren="true" scale="true" repeatt="true" repeats="true" url="textures/cesped.jpg"></ImageTexture>
+                  <TextureTransform translation="0,0" center="0,0" scale="25 25"></TextureTransform>
+            </appearance>
+               <plane primtype="TRIANGLES " center="0,0,0" subdivision="1,1" lit="true" usegeocache="true" ccw="true" solid="true" size="800 800"></plane>
+        </shape>
+        
+   
+   
+		<!-- Object: Sound -->
+		 <Sound direction='0 0 -1' maxBack='1e+006' maxFront='1e+006' minBack='1e+006' minFront='1e+006' spatialize='false'>
+          <AudioClip loop='true' url='"http://lisaerb.com/root/site/media/audio/next-level-trans-IXP_augmentednarrative 1.mp3" "sound/horse.ogg"'/>
+        </Sound>
+		
+        
+        
+<!-- NOT WORKING -->       
+        <!-- texture: noria_support_ground -->
+        <transform scaleorientation="0,0,0,0" rotation="0,0,0,0" translation="0,0,0" center="0,0,0" bboxsize="-1,-1,-1" bboxcenter="0,0,0" render="true" scale="3 3 3">
+               <transform scaleorientation="0,0,0,0" scale="1,1,1" rotation="0,0,0,0" center="0,0,0" bboxsize="-1,-1,-1" bboxcenter="0,0,0" render="true" translation="0 6 0">
+                  <transform scaleorientation="0,0,0,0" scale="1,1,1" rotation="0,0,0,0" center="0,0,0" bboxsize="-1,-1,-1" bboxcenter="0,0,0" render="true" translation="0 0 0.5">
+                     <shape ispickable="true" bboxsize="-1,-1,-1" bboxcenter="0,0,0" render="true">
+                        <appearance sorttype="auto">
+                           <material shininess="0.2" emissivecolor="0,0,0" ambientintensity="0.2" specularcolor="0.5 0.5 0.5" diffusecolor="1 1 1"></material>
+                           <ImageTexture hidechildren="true" scale="true" repeatt="true" repeats="true" url="&quot;textures/noria_support_ground.jpg&quot;"></ImageTexture>
+                        </appearance>
+                        <box lit="true" usegeocache="true" ccw="true" solid="true" onclick="pickFunction()" size="30 1.8 1.8"></box>
+                     </shape>
+                </transform>
+          </transform>
+          
+          <!-- texture: noria_support -->
+          <transform scaleorientation="0,0,0,0" scale="1,1,1" center="0,0,0" bboxsize="-1,-1,-1" bboxcenter="0,0,0" render="true" translation="-6 0 10" rotation="0 1 0 -1.1780972450961724">
+          	<shape ispickable="true" bboxsize="-1,-1,-1" bboxcenter="0,0,0" render="true">
+            	<appearance sorttype="auto">
+                	<material shininess="0.2" emissivecolor="0,0,0" ambientintensity="0.2" specularcolor="0.5 0.5 0.5" diffusecolor="1 1 1"></material>
+                    <ImageTexture hidechildren="true" scale="true" repeatt="true" repeats="true" url="&quot;textures/noria_support.png&quot;"></ImageTexture>
+                </appearance>
+                <box lit="true" usegeocache="true" ccw="true" solid="true" onclick="pickFunction()" size="20 1 1"></box>
+             </shape>
+          </transform> 
+<!-- ////NOT WORKING -->           
+                    
+            
+            
+                
+	  
+	  
+	  
+	  
+	   </scene> 
+	   
+	   
+	  
+	   
+	</x3d> 
+   </body> 
+</html> 
